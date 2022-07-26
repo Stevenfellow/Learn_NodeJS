@@ -1,13 +1,11 @@
-var http = require('http');
-
+// Non blocking code Example Callback
 var fs = require('fs');
 
-http.createServer(function (req, res){
-   fs.readFileSync('hope.txt', function(err, data){
-   res.writeHead(200, {'content-type': 'text/plain'});
-   res.write(data);
-   return res.end();
-}) 
-}).listen(8080);
 
-console.log('Server running at http://localhost:8080/');
+   fs.readFile('hope.txt', function(err, data){
+      if(err) return console.error(err);
+      console.log(data.toString());
+});
+
+
+console.log('Program Ended');
